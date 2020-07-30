@@ -1,5 +1,8 @@
 package trees;
 
+/*
+ * This class creates a node with left and right reference
+ */
 public class Node {
 	
 	private int value;
