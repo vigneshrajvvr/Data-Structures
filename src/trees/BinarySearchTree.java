@@ -37,6 +37,30 @@ public class BinarySearchTree {
 		}
 	}
 	
+	/*
+	 * To search for a value in binary search tree
+	 */
+	public boolean lookup(int value) {
+		if(root == null) {
+			return false;
+		}
+		else {
+			Node tempNode = root;
+			while(tempNode != null) {
+				if(value == tempNode.getValue()) {
+					return true;
+				}
+				else if(value < tempNode.getValue()) {
+					tempNode = tempNode.getLeft();
+				}
+				else {
+					tempNode = tempNode.getRight();
+				}
+			}
+		}
+		return false;
+	}
+	
 	public void traversal() {
 		traversal(root);
 	}
@@ -61,6 +85,7 @@ public class BinarySearchTree {
 		bst.insert(15);
 		bst.insert(1);
 		bst.traversal();
+		System.out.println(bst.lookup(1));
 	}
 	
 }
