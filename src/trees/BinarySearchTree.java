@@ -9,7 +9,7 @@ public class BinarySearchTree {
 	}
 	
 	/*
-	 * To insert a node in the Binary Search Tree
+	 * To insert a node in Binary Search Tree
 	 */
 	public void insert(int value) {
 		Node insertNode = new Node(value);
