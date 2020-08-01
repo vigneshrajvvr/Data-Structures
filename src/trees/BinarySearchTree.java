@@ -63,6 +63,11 @@ public class BinarySearchTree {
 	
 	/*
 	 * To remove a node in Binary Search Tree
+	 * To replace an element which has to be deleted, we have to
+	 * select an element which is greater than all elements in the 
+	 * left sub tree and lesser than all elements in the right sub tree.
+	 *
+	 * Obviously, it the left most element of right sub tree.
 	 */
 	public boolean remove(int value) {
 		if(root == null) {
@@ -80,6 +85,36 @@ public class BinarySearchTree {
 				currentNode = currentNode.getRight();
 			}
 			else {
+				//No right node
+				if(currentNode.getRight() == null) {
+					if(parentNode == null) {
+						this.root = currentNode.getLeft();
+					}
+					else {
+						if(currentNode.getValue() < parentNode.getValue()) {
+							parentNode.setLeft(currentNode.getLeft());
+						}
+						else {
+							parentNode.setRight(currentNode.getLeft());
+						}
+					}
+				}//Right child with no left node
+				else if(currentNode.getRight().getLeft() == null){
+					if(parentNode == null) {
+						this.root = currentNode.getRight();
+					}
+					else {
+						if(currentNode.getValue() < parentNode.getValue()) {
+							parentNode.setLeft(currentNode.getRight());
+						}
+						else {
+							parentNode.setRight(currentNode.getRight());
+						}
+					}
+				}
+				else {
+				
+				}
 				return true;
 			}
 		}
