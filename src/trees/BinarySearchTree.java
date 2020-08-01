@@ -61,6 +61,35 @@ public class BinarySearchTree {
 		return false;
 	}
 	
+	/*
+	 * To remove a node in Binary Search Tree
+	 */
+	public boolean remove(int value) {
+		if(root == null) {
+			return false;
+		}
+		Node currentNode = root;
+		Node parentNode = null;
+		while(currentNode != null) {
+			if(value < currentNode.getValue()) {
+				parentNode = currentNode;
+				currentNode = currentNode.getLeft();
+			}
+			else if (value > currentNode.getValue()) {
+				parentNode = currentNode;
+				currentNode = currentNode.getRight();
+			}
+			else {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	/*
+	 * To list all the nodes in Binary Search Tree
+	 */
 	public void traversal() {
 		traversal(root);
 	}
