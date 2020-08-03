@@ -63,7 +63,8 @@ public class BinarySearchTree {
 	
 	/*
 	 * To remove a node in Binary Search Tree
-	 * To replace an element which has to be deleted, we have to
+	 * 
+	 * To delete an element which has both child, we have to
 	 * select an element which is greater than all elements in the 
 	 * left sub tree and lesser than all elements in the right sub tree.
 	 *
@@ -100,20 +101,48 @@ public class BinarySearchTree {
 					}
 				}//Right child with no left node
 				else if(currentNode.getRight().getLeft() == null){
+					Node leftSubTree = currentNode.getLeft();
 					if(parentNode == null) {
 						this.root = currentNode.getRight();
 					}
 					else {
 						if(currentNode.getValue() < parentNode.getValue()) {
 							parentNode.setLeft(currentNode.getRight());
+							parentNode.getLeft().setLeft(leftSubTree);
 						}
 						else {
 							parentNode.setRight(currentNode.getRight());
+							parentNode.getLeft().setLeft(leftSubTree);
 						}
 					}
-				}
+				}//Right child with left node
 				else {
-				
+					Node leftMost = currentNode.getRight().getLeft();
+					Node leftMostParent = currentNode.getRight();
+					while(leftMost.getLeft() != null) {
+						leftMostParent = leftMost.getLeft();
+						leftMost = leftMost.getLeft();
+					}
+					if(parentNode == null) {
+						Node leftSubTree = root.getLeft();
+						Node rightSubTree = root.getRight();
+						currentNode = leftMost;
+						leftMost.setLeft(leftSubTree);
+						leftMost.setRight(rightSubTree);
+						leftMostParent.setLeft(null);
+						this.root = currentNode;
+					}
+					else {
+						Node rightSubTree = currentNode.getRight();
+						if(currentNode.getValue() < parentNode.getValue()) {
+							parentNode.setLeft(leftMost);
+						}
+						else {
+							parentNode.setRight(leftMost);
+						}
+						leftMostParent.setLeft(null);
+						leftMost.setRight(rightSubTree);
+					}
 				}
 				return true;
 			}
@@ -148,8 +177,15 @@ public class BinarySearchTree {
 		bst.insert(170);
 		bst.insert(15);
 		bst.insert(1);
+		bst.insert(50);
 		bst.traversal();
-		System.out.println(bst.lookup(1));
+		System.out.println();
+		System.out.println(bst.remove(9));
+		bst.traversal();
+		System.out.println(bst.remove(20));
+		bst.traversal();
+		System.out.println(bst.remove(4));
+		bst.traversal();
 	}
 	
 }
