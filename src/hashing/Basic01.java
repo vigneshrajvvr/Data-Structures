@@ -14,7 +14,7 @@ public class Basic01 {
 	}
 	
 	//hash function to map a string to integer
-	//many strings will have same hash value - collision
+	//many strings will have same hash value - cosllision
 	private static int ascii(String value, int mod) {
 		
 		int sum = 0;
