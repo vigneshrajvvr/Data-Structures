@@ -1,4 +1,4 @@
-package trees;
+package binarysearchtree;
 
 /*
  * This class creates a node with left and right reference
