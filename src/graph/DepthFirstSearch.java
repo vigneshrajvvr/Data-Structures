@@ -34,8 +34,7 @@ public class DepthFirstSearch {
 		System.out.print(vertex +  " ");
 		visited[vertex] = true;
 		Iterator<Integer> connections = adjList[vertex].listIterator();
-		while(!connections.hasNext()) {
-			System.out.println(connections.next());
+		while(connections.hasNext()) {
 			int next = connections.next();
 			DFS(next);
 		}
