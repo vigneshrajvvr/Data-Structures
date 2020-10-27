@@ -31,7 +31,7 @@ public class DepthFirstSearchMain {
 		dfsDisconnected.listConnections();
         
         System.out.println("Depth First search - prints disconnected vertexes too!!!");
-        dfsDisconnected.DFS();
+        dfsDisconnected.DFS(); 
 		
 	}
 
