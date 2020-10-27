@@ -3,14 +3,13 @@ package graph;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-// This will not handled disconnected vertexes
-public class DepthFirstSearch {
+public class DepthFirstSearchDisconnected {
 	
 	// To store graph elements and visited array
 	private LinkedList<Integer> adjList[];
 	private boolean visited[];
 	
-	public DepthFirstSearch(int size) {
+	public DepthFirstSearchDisconnected(int size) {
 		
 		adjList = new LinkedList[size];
 		visited = new boolean[size];
@@ -27,7 +26,7 @@ public class DepthFirstSearch {
 	}
 	
 	// Depth First Search traversal
-	public void DFS(int vertex) {
+	public void DFS(int vertex, boolean visited[]) {
 		
 		if(visited[vertex]) {
 			return;
@@ -37,7 +36,19 @@ public class DepthFirstSearch {
 		Iterator<Integer> connections = adjList[vertex].listIterator();
 		while(connections.hasNext()) {
 			int next = connections.next();
-			DFS(next);
+			DFS(next, visited);
+		}
+		
+	}
+	
+	public void DFS() {
+		
+		for(int i=0;i<adjList.length;i++) {
+			
+			if(visited[i] == false) {
+				DFS(i, visited);
+			}
+			
 		}
 		
 	}

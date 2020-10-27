@@ -17,6 +17,21 @@ public class DepthFirstSearchMain {
         
         System.out.println("Depth First search");
         dfs.DFS(2);
+        
+		DepthFirstSearchDisconnected dfsDisconnected = new DepthFirstSearchDisconnected(4);
+		
+
+		dfsDisconnected.addEdge(0, 1); 
+		dfsDisconnected.addEdge(0, 2); 
+		dfsDisconnected.addEdge(1, 2); 
+		dfsDisconnected.addEdge(2, 0); 
+		dfsDisconnected.addEdge(2, 3); 
+		dfsDisconnected.addEdge(3, 3);
+        
+		dfsDisconnected.listConnections();
+        
+        System.out.println("Depth First search - prints disconnected vertexes too!!!");
+        dfsDisconnected.DFS();
 		
 	}
 
