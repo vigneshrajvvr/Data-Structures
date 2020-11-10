@@ -4,13 +4,13 @@ import java.util.Stack;
 
 public class DepthFirstSearchAdjacenyMatrix {
 	
-	private int[][] adjacenyMatrix;
+	private int[][] adjacencyMatrix;
 	
 	private boolean[] visited;
 	
 	public DepthFirstSearchAdjacenyMatrix(int numberOfVertexes) {
 		
-		adjacenyMatrix = new int[numberOfVertexes][numberOfVertexes];
+		adjacencyMatrix = new int[numberOfVertexes][numberOfVertexes];
 		visited = new boolean[numberOfVertexes];
 		
 	}
@@ -18,8 +18,8 @@ public class DepthFirstSearchAdjacenyMatrix {
 	// To add edges
 	public void addEdge(int v1, int v2) {
 		
-		adjacenyMatrix[v1][v2] = 1;
-		adjacenyMatrix[v2][v1] = 1;
+		adjacencyMatrix[v1][v2] = 1;
+		adjacencyMatrix[v2][v1] = 1;
 		
 	}
 	
@@ -37,9 +37,9 @@ public class DepthFirstSearchAdjacenyMatrix {
 		while(!s.isEmpty()) {
 			
 			int x = s.pop();			
-			for(int row =0;row < adjacenyMatrix.length;row++) {
+			for(int row =0;row < adjacencyMatrix.length;row++) {
 				
-				if(adjacenyMatrix[start][row] == 1) {
+				if(adjacencyMatrix[start][row] == 1) {
 					dfs(row);
 				}
 								
@@ -50,12 +50,12 @@ public class DepthFirstSearchAdjacenyMatrix {
 		
 	}
 	
-	// To view adjaceny matrix
+	// To view adjacency matrix
 	public void showMatrix() {
 		
-		for(int row = 0; row<adjacenyMatrix.length;row++) {
-			for(int col = 0; col<adjacenyMatrix[row].length;col++) {
-				System.out.print(adjacenyMatrix[row][col] + " ");
+		for(int row = 0; row<adjacencyMatrix.length;row++) {
+			for(int col = 0; col<adjacencyMatrix[row].length;col++) {
+				System.out.print(adjacencyMatrix[row][col] + " ");
 			}
 			System.out.println();
 		}
