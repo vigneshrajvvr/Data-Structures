@@ -12,6 +12,8 @@ public class DepthFirstSearchAdjacenyMatrixMain {
 		
 		dfs.showMatrix();
 		
+		dfs.dfs(0);
+		
 		
 	}
 

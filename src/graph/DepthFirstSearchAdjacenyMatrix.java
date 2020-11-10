@@ -1,12 +1,17 @@
 package graph;
 
+import java.util.Stack;
+
 public class DepthFirstSearchAdjacenyMatrix {
 	
 	private int[][] adjacenyMatrix;
 	
+	private boolean[] visited;
+	
 	public DepthFirstSearchAdjacenyMatrix(int numberOfVertexes) {
 		
 		adjacenyMatrix = new int[numberOfVertexes][numberOfVertexes];
+		visited = new boolean[numberOfVertexes];
 		
 	}
 	
@@ -20,6 +25,28 @@ public class DepthFirstSearchAdjacenyMatrix {
 	
 	// Depth first search in adjacency matrix
 	public void dfs(int start) {
+		
+		if(visited[start]) {
+			return;
+		}
+		visited[start] = true;
+		System.out.println(start);
+		Stack<Integer> s = new Stack<>();
+		s.add(start);
+		
+		while(!s.isEmpty()) {
+			
+			int x = s.pop();			
+			for(int row =0;row < adjacenyMatrix.length;row++) {
+				
+				if(adjacenyMatrix[start][row] == 1) {
+					dfs(row);
+				}
+								
+			}
+			
+		}
+		
 		
 	}
 	
