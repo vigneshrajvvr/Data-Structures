@@ -1,6 +1,6 @@
 package graph;
 
-public class DepthFirstSearchMain {
+public class DepthFirstSearchAdjacenyListMain {
 	
 	public static void main(String args[]) {
 		
