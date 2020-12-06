@@ -23,12 +23,18 @@ public class GenerateSubstrings {
 					
 			for(int j=1;j<=input.length();j++) {
 				
+				String tempString = "";
+				
 				for(int k=0;k<=input.length() - j;k++) {
-						
+					
+//					tempString += input.substring(k,k + j);
+					
 					System.out.print(input.substring(k,k + j) + " ");
 //					LOG_VARIABLE.info(input.substring(k,k + j));
 					
 				}
+				
+				System.out.println(tempString);
 				
 			}		
 	}

@@ -131,11 +131,55 @@ public class Task1 {
 
 		ArrayList<String> child = new ArrayList<String>();
 
-		/*
-		 * Write your logic here
-		*/
+		int parentOpeningTagIndex = inputHTMLTags.indexOf(tagName);
+		
+		// To check if the tagName is present in the input file
+		if(parentOpeningTagIndex == -1) {
+			 System.out.println("Tag " + tagName + " not found!!");
+		}
+		
+		// To check if parent tag is self closing tag
+		int parentOpeningTagEndIndex = inputHTMLTags.indexOf('>', parentOpeningTagIndex);
+		if(inputHTMLTags.charAt(parentOpeningTagEndIndex - 1) == '/') {
+			System.out.println("Tag is a self closing tag. NO CHILD TO BE FOUND");
+		}
+		
+		// To check if the parent tag doesn't contain any elements
+		int parentClosingTagIndex = inputHTMLTags.indexOf(tagName, parentOpeningTagEndIndex);
+		// if the parent tag is empty, then closing tag name index starts 3 positions away
+		// from the opening tag.
+		if(parentOpeningTagEndIndex + 3 == parentClosingTagIndex) {
+			System.out.println("Parent tag doesn't contain any child");
+		}
+		
+		int tempTagStartIndex = inputHTMLTags.indexOf("<", parentOpeningTagIndex);
+		int tempTagEndIndex = inputHTMLTags.indexOf(">", tempTagStartIndex);
+		String tempTag = inputHTMLTags.substring(tempTagStartIndex + 1, tempTagEndIndex);
 
-		System.out.println("Output: "+child);
+		while(!tempTag.equals(tagName)) {
+			
+			//if the tempTag is self closing tag
+			if(inputHTMLTags.charAt(tempTagEndIndex - 1) == '/') {
+				child.add(inputHTMLTags.substring(tempTagStartIndex + 1, tempTagEndIndex - 1));
+				tempTagStartIndex = inputHTMLTags.indexOf("<",tempTagEndIndex);
+				tempTagEndIndex = inputHTMLTags.indexOf(">", tempTagStartIndex);
+				tempTag = inputHTMLTags.substring(tempTagStartIndex + 1, tempTagEndIndex);
+				continue;
+			}
+			
+			child.add(tempTag);
+			
+			tempTagStartIndex = inputHTMLTags.indexOf(tempTag,tempTagEndIndex);
+			tempTagEndIndex = inputHTMLTags.indexOf(">", tempTagStartIndex);
+						
+			tempTagStartIndex = inputHTMLTags.indexOf("<",tempTagEndIndex);
+			tempTagEndIndex = inputHTMLTags.indexOf(">", tempTagStartIndex);
+			
+			tempTag = inputHTMLTags.substring(tempTagStartIndex + 2, tempTagEndIndex);	
+			System.out.println(tempTag);			
+		}
+		
+		System.out.println("Output: " + child);
 	}
 
 }
