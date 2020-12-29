@@ -31,18 +31,30 @@ public class DFSTrees {
 	}
 	
 	public static void dfs() {
-		dfs(1);
+		dfs(1,1);
 	}
 	
-	public static void dfs(int startNode) {
-		if(visited[startNode]) {
-			return;
-		}
+//	public static void dfs(int startNode) {
+//		if(visited[startNode]) {
+//			return;
+//		}
+//		System.out.println(startNode);
+//		visited[startNode] = true;
+//		List<Integer> tempList = nodes[startNode];
+//		for(int i=0;i<tempList.size();i++) {
+//			dfs(tempList.get(i));
+//		}
+//	}
+	
+	// Just traversal of tree, depth wise
+	public static void dfs(int startNode, int parentNode) {
 		System.out.println(startNode);
-		visited[startNode] = true;
 		List<Integer> tempList = nodes[startNode];
-		for(int i=0;i<tempList.size();i++) {
-			dfs(tempList.get(i));
+		for(int i : tempList) {
+			if(i == parentNode) {
+				continue;
+			}
+			dfs(i, startNode);
 		}
 	}
 }
