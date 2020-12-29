@@ -8,9 +8,9 @@ public class PowFunction {
 			return 1;
 		}
 		
-		if(n == 1) {
-			return a;
-		}
+//		if(n == 1) {
+//			return a;
+//		}
 		
 		if(n%2 == 0) { // n is even
 			int val = pow(a,n/2);
