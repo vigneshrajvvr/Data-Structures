@@ -51,10 +51,56 @@ public class howSum {
 	}
 	
 	public static void main(String args[]) {
+		// [3,4]
 		int arr[] = howSum(new int[] {5,3,4,7}, 7);
 		if(arr == null) {
-			System.out.println("No pairs found");	
+			System.out.println("No combination found");	
 		} else {
+			System.out.println("Combination : ");
+			for(int val : arr) {
+				System.out.println(val);
+			}
+		}
+		
+	    // [3,2,2]
+	    arr = howSum(new int[] {2,3}, 7);
+		if(arr == null) {
+			System.out.println("No combination found");	
+		} else {
+			System.out.println("Combination : ");
+			for(int val : arr) {
+				System.out.println(val);
+			}
+		}
+		
+		// [] - No combinations found
+		arr = howSum(new int[] {2,4}, 7);
+		if(arr == null) {
+			System.out.println("No combination found");	
+		} else {
+			System.out.println("Combination : ");
+			for(int val : arr) {
+				System.out.println(val);
+			}
+		}
+		
+		// [2,2,2,2]
+		arr = howSum(new int[] {2,3,5}, 8);
+		if(arr == null) {
+			System.out.println("No combination found");	
+		} else {
+			System.out.println("Combination : ");
+			for(int val : arr) {
+				System.out.println(val);
+			}
+		}
+		
+		// [] - No combinations found
+		arr = howSum(new int[] {7,14}, 300);
+		if(arr == null) {
+			System.out.println("No combination found");	
+		} else {
+			System.out.println("Combination : ");
 			for(int val : arr) {
 				System.out.println(val);
 			}
