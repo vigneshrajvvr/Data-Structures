@@ -16,6 +16,21 @@ import java.util.List;
  * single one.
  */
 
+/*
+ * m = target sum
+ * n = arr.length
+ * 
+ * 
+ * Brute force
+ * Time: O(n * m)
+ * Space: O(m)
+ * 
+ * 
+ * Optimized
+ * Time: O(m * n)
+ * Space: O(m * m) -> m keys * array of m value 
+ */
+
 public class howSum {
 	
 	static int[] howSum(int arr[], int targetSum) {
