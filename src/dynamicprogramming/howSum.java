@@ -1,6 +1,7 @@
 package dynamicprogramming;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /*
@@ -23,7 +24,7 @@ public class howSum {
 			return null;
 		}
 		
-		List<Integer> result = howSumCalculation(arr, targetSum);
+		List<Integer> result = howSumCalculation(arr, targetSum, new HashMap<>());
 		if(result == null) {
 			return null;
 		}
@@ -31,7 +32,12 @@ public class howSum {
 		return arr1;
 	}
 	
-	static List<Integer> howSumCalculation(int[] arr, int targetSum) {
+	static List<Integer> howSumCalculation(int[] arr, int targetSum, HashMap<Integer, List<Integer>> memo) {
+		
+		if(memo.containsKey(targetSum)) {
+			return memo.get(targetSum);
+		}
+		
 		if(targetSum == 0) {
 			return new ArrayList<>();
 		}
@@ -41,12 +47,15 @@ public class howSum {
 		}
 		
 		for(int i=0;i<arr.length;i++) { 
-			List<Integer> remainderResult = howSumCalculation(arr, targetSum - arr[i]);
+			List<Integer> remainderResult = howSumCalculation(arr, targetSum - arr[i], memo);
 			if(remainderResult != null) {
 				remainderResult.add(arr[i]);
+				memo.put(targetSum, remainderResult);
 				return remainderResult;
 			}
-		}				
+		}		
+		
+		memo.put(targetSum, null);
 		return null;
 	}
 	
