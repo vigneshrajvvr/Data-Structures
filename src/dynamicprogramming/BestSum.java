@@ -1,6 +1,26 @@
 package dynamicprogramming;
 
 import java.util.ArrayList;
+
+/*
+ * Write a function 'bestSum(targetSum, numbers)' that takes in a 
+ * targetSum and an array of numbers as arguments.
+ * 
+ * The function should return an array containing the shortest
+ * combination of numbers that add up to exactly the targetSum.
+ * 
+ * If there is a tie for the shortest combination, you may return any 
+ * one of the shortest.
+ * 
+ * Brute force:
+ * Time: O(n^m)
+ * space: O(m^2) -> call stack and resultant array.
+ * 
+ * Optimized:
+ * Time: O(n*m)
+ * space: O(m^2)
+ */
+
 import java.util.HashMap;
 import java.util.List;
 
