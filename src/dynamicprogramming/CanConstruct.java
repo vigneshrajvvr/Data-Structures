@@ -16,6 +16,8 @@ import java.util.HashSet;
 
 public class CanConstruct {
 	
+	private static HashMap<String, Boolean> memoize = new HashMap<>();
+	
 	public static boolean canConstruct(String target, String[] wordBreak) {
 		
 		if(target.equals("")) {
@@ -33,6 +35,10 @@ public class CanConstruct {
 	
 	private static boolean canConstructImplementation(String target, HashSet<String> dictWords) {
 		
+		if(memoize.containsKey(target)) {
+			return memoize.get(target);
+		}
+		
 		if(target.equals("")) {
 			return true;
 		}
@@ -42,10 +48,12 @@ public class CanConstruct {
 			String temp = target.substring(0,i);
 			
 			if(dictWords.contains(temp) && canConstructImplementation(target.substring(i,target.length()), dictWords)) {
+				memoize.put(target, true);
 				return true;
 			}
 		}
 		
+		memoize.put(target, false);
 		return false;
 	}
 	
