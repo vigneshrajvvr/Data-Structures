@@ -31,7 +31,7 @@ import java.util.List;
  * Space: O(m * m) -> m keys * array of m value 
  */
 
-public class howSum {
+public class HowSum {
 	
 	static int[] howSum(int arr[], int targetSum) {
 		

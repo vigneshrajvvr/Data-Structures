@@ -15,7 +15,7 @@ import java.util.Map;
  * You may assume that all input numbers are non negative
  */
 
-public class canSum {
+public class CanSum {
 		
 	// ouput:
 	//	true
