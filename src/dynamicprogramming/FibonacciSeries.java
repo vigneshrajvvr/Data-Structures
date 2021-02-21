@@ -20,6 +20,12 @@ public class FibonacciSeries {
 		long end2 = System.currentTimeMillis();
 		
 		System.out.println("Time take : " + (end2 - start2) + " ms");
+		
+		System.out.println(fibTabulation(6));//8
+		System.out.println(fibTabulation(7));//13
+		System.out.println(fibTabulation(8));//21
+		System.out.println(fibTabulation(50));//12586269025
+	
 	}
 
 	// Recursive solution
@@ -46,6 +52,24 @@ public class FibonacciSeries {
 		valuesMap.put(n, result);
 		
 		return result;		
+	}
+	
+	// Dynamic programming - Tabulation method
+	public static long fibTabulation(int n) {
+		if(n <= 2) {
+			return 1;
+		}
+		long arr[] = new long[n+1];
+		arr[1] = 1;
+		
+		int i=2;
+		while(i <= n) {
+			arr[i] += arr[i-2];
+			arr[i-1] += arr[i-2];
+			i++;
+		}
+		
+		return arr[n] + arr[n-1];
 	}
 	
 }
