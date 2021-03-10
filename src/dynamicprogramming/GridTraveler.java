@@ -12,7 +12,7 @@ package dynamicprogramming;
 
 public class GridTraveler {
 	
-	public static double gridTraveler(int row, int col) {
+	public static long gridTraveler(int row, int col) {
 		if(row == 1 && col == 1) {
 			return 1;
 		}
@@ -22,8 +22,8 @@ public class GridTraveler {
 		return gridTraveler(row-1, col) + gridTraveler(row, col-1);
 	}
 	
-	public static double gridTravelerTabulation(int m, int n) {
-		double tabulation[][] = new double[m+1][n+1];
+	public static long gridTravelerTabulation(int m, int n) {
+		long tabulation[][] = new long[m+1][n+1];
         tabulation[1][1] = 1;
         for(int i=0;i<m+1;i++){
             for(int j=0; j<n+1;j++) {
