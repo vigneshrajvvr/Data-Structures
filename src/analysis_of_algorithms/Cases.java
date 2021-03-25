@@ -17,5 +17,20 @@ public class Cases {
 		}
 		return sum;
 	}
+	
+	/*
+	 * Big O(Worst case)- n, linear time
+	 * Theta: average case
+	 * Omega: Best case - it's constant as if the element to be found is present 
+	 * 		  in the first position of the array.
+	 */
+	public int linearSearch(int arr[], int n, int x) {
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i] == x) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 }
