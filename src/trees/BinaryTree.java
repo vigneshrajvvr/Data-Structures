@@ -9,7 +9,7 @@ public class BinaryTree {
 		root.getLeft().setRight(new Node(40));
 		
 		MaximumBinaryTree test = new MaximumBinaryTree();
-		System.out.println(test.maximum(root, Integer.MIN_VALUE)); // 40
+		System.out.println(test.maximum(root)); // 40
 	}
 
 }
