@@ -30,11 +30,16 @@ public class NumberOfDigits {
 		count++;
 		return digitsRecHelper(value, count);
 	}
+	
+	// Log base 10 of value + 1 give number of digits in it.
+	public static int digitsLog(int value) {
+		return (int)Math.floor(Math.log10(value) + 1);
+	}
  	
 	public static void main(String args[]) {
 		System.out.println(digits(123)); //3
 		System.out.println(digitsRec(1234)); //4
 		System.out.println(digits(10)); //2
-		System.out.println(digitsRec(12364645)); //8
+		System.out.println(digitsLog(12364645)); //8
 	}
 }
