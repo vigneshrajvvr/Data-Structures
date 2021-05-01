@@ -27,6 +27,7 @@ public class GCD {
 		return a;
 	}
 	
+	// log(min(a,b))
 	public static int euclidRecurGcd(int a, int b) {
 		if(b == 0) {
 			return a;
