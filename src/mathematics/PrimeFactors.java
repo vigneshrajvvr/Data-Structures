@@ -33,7 +33,7 @@ public class PrimeFactors {
 			}
 		}
 		
-		if(n > 1) {
+		if(n > 3) {
 			System.out.println(n);
 		}
 	}
