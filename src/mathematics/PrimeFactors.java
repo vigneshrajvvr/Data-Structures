@@ -23,9 +23,13 @@ public class PrimeFactors {
 			}
 		}
 		for(int i = 5; i*i <= n ; i+=6) {
-			while(n % i == 0 || n % (i + 2) == 0) {
+			while(n % i == 0) {
 				System.out.println(i);
 				n = n/i;
+			}
+			while(n % (i+2) == 0) {
+				System.out.println(i+2);
+				n = n/(i+2);
 			}
 		}
 		
