@@ -15,6 +15,10 @@ public class PrimeFactors {
 				n = n/i;
 			}
 		}
+		
+		if(n > 1) {
+			System.out.println(n);
+		}
 	}
 	
 	// n * n ^ (1/2) * logn
