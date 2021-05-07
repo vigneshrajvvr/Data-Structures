@@ -11,12 +11,19 @@ public class Power {
 		return result;
 	} 
 	
-//	public static int powerOptimized(int x, int n) {
-//		if(n == 0) {
-//			return 1;
-//		}
-//		
-//	}
+	public static int powerOptimised(int x, int n) {
+		if(n == 0) {
+			return 1;
+		}
+		
+		if(n % 2 == 0) {
+			int value = powerOptimised(x, n/2);
+			return value * value;
+		} else {
+			int value = x * powerOptimised(x, n-1);
+			return value;
+		}
+	}
 	
 	public static void main(String args[]) {
 		System.out.println(powerBruteForce(2,3));
@@ -24,7 +31,7 @@ public class Power {
 		System.out.println(powerBruteForce(5,0));
 		System.out.println(powerBruteForce(5,1));
 		
-//		System.out.println(powerOptimized(3,4));
+		System.out.println(powerOptimised(2,6));
 
 	}
 }
