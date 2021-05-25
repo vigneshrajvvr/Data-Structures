@@ -41,10 +41,19 @@ public class JosephusProblem {
         return josephusRecursionHelper(n, k, i, stack);
     }
 	
+	private static int josephusRecursionOptimized(int n, int k) {
+		if(n == 1) {
+			return 1;
+		}
+		
+		return (josephusRecursionOptimized(n - 1, k) + k) % n;
+	}
+	
 	
 	public static void main(String args[]) {
 		System.out.println(josephusIterative(17,16));
 		System.out.println(josephusRecursion(17,16));
+		System.out.println(josephusRecursionOptimized(17,16));
 	}
 	
 }
