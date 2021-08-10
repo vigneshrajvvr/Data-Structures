@@ -3,7 +3,7 @@ package binary_search_trees;
 public class FloorBst {
 	
 	/*
-	 * To find floor of Binary Search Tree 
+	 * To find floor of Binary Search Tree  
 	 */
 
 	public Node floor(Node root, Node temp, int val) {
