@@ -1,44 +1,32 @@
 package binarysearchtree;
 
-/*
- * This class creates a node with left and right reference
- */
 public class Node {
 	
-	private int value;
 	private Node left;
 	private Node right;
-
-    public Node(int value, Node left, Node right) {
-	    this.value = value;
-	    this.left = left;
-	    this.right = right;
+	private int value;
+	
+	public Node(int value) {
+		this.value = value;
 	}
-
-	public Node (int value) {
-	    this.value = value;
-	    this.left = null;
-	    this.right = null;
-	}
-
+	
 	public Node getLeft() {
-	    return left;
+		return left;
 	}
-
 	public void setLeft(Node left) {
-	    this.left = left;
-	 }
-
+		this.left = left;
+	}
 	public Node getRight() {
-	    return right;
+		return right;
 	}
-
 	public void setRight(Node right) {
-	    this.right = right;
+		this.right = right;
 	}
-
 	public int getValue() {
-	    return value;
+		return value;
+	}
+	public void setValue(int value) {
+		this.value = value;
 	}
 }
-	
+

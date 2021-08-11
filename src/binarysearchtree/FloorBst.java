@@ -1,4 +1,4 @@
-package binary_search_trees;
+package binarysearchtree;
 
 public class FloorBst {
 	
