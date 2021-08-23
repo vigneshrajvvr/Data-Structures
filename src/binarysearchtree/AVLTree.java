@@ -8,6 +8,7 @@ public class AVLTree {
 		
 		if(root == null) {
 			Node root = new Node(value);
+			root.setHeight(1);
 			this.setRoot(root);
 		}
 		
