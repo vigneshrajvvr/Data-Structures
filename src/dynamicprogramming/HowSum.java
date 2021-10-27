@@ -32,100 +32,179 @@ import java.util.List;
  */
 
 public class HowSum {
-	
+
 	static int[] howSum(int arr[], int targetSum) {
-		
-		if(targetSum == 0) {
+
+		if (targetSum == 0) {
 			return null;
 		}
-		
+
 		List<Integer> result = howSumCalculation(arr, targetSum, new HashMap<>());
-		if(result == null) {
+		if (result == null) {
 			return null;
 		}
-		int arr1[] = result.stream().mapToInt(i->i).toArray();
+		int arr1[] = result.stream().mapToInt(i -> i).toArray();
 		return arr1;
 	}
-	
+
 	static List<Integer> howSumCalculation(int[] arr, int targetSum, HashMap<Integer, List<Integer>> memo) {
-		
-		if(memo.containsKey(targetSum)) {
+
+		if (memo.containsKey(targetSum)) {
 			return memo.get(targetSum);
 		}
-		
-		if(targetSum == 0) {
+
+		if (targetSum == 0) {
 			return new ArrayList<>();
 		}
-		
-		if(targetSum < 0) {
+
+		if (targetSum < 0) {
 			return null;
 		}
-		
-		for(int i=0;i<arr.length;i++) { 
+
+		for (int i = 0; i < arr.length; i++) {
 			List<Integer> remainderResult = howSumCalculation(arr, targetSum - arr[i], memo);
-			if(remainderResult != null) {
+			if (remainderResult != null) {
 				remainderResult.add(arr[i]);
 				memo.put(targetSum, remainderResult);
 				return remainderResult;
 			}
-		}		
-		
+		}
+
 		memo.put(targetSum, null);
 		return null;
 	}
-	
+
+	public static ArrayList<Integer> howSumTabulation(int[] arr, int target) {
+		ArrayList<ArrayList<Integer>> result = new ArrayList<>(target + 1);
+		for (int i = 0; i < target + 1; i++) {
+			result.add(null);
+		}
+
+		result.set(0, new ArrayList<>());
+
+		for (int i = 0; i < result.size(); i++) {
+			if (result.get(i) != null) {
+				for (int j = 0; j < arr.length; j++) {
+					if (i + arr[j] <= target) {
+						ArrayList<Integer> tempList1 = result.get(i + arr[j]);
+						ArrayList<Integer> tempList2 = result.get(i);
+						tempList1 = new ArrayList<>();
+						tempList1.addAll(tempList2);
+						tempList1.add(arr[j]);
+						result.set(i + arr[j], tempList1);
+					}
+				}
+			}
+		}
+
+		return result.get(target);
+	}
+
 	public static void main(String args[]) {
+
 		// [3,4]
-		int arr[] = howSum(new int[] {5,3,4,7}, 7);
-		if(arr == null) {
-			System.out.println("No combination found");	
+		int arr[] = howSum(new int[] { 5, 3, 4, 7 }, 7);
+		if (arr == null) {
+			System.out.println("No combination found");
 		} else {
 			System.out.println("Combination : ");
-			for(int val : arr) {
+			for (int val : arr) {
 				System.out.println(val);
 			}
 		}
 		
-	    // [3,2,2]
-	    arr = howSum(new int[] {2,3}, 7);
-		if(arr == null) {
-			System.out.println("No combination found");	
+		ArrayList<Integer> result = howSumTabulation(new int[] { 5, 3, 4, 7 }, 7);
+		if(result == null) {
+			System.out.println("No combination found");
+		} else {
+			System.out.println("Tabulation : ");
+			for (int val : result) {
+				System.out.println(val);
+			}
+		}
+
+		// [3,2,2]
+		arr = howSum(new int[] { 2, 3 }, 7);
+		if (arr == null) {
+			System.out.println("No combination found");
 		} else {
 			System.out.println("Combination : ");
-			for(int val : arr) {
+			for (int val : arr) {
 				System.out.println(val);
 			}
 		}
 		
+		result = howSumTabulation(new int[] { 2, 3 }, 7);
+		if(result == null) {
+			System.out.println("No combination found");
+		} else {
+			System.out.println("Tabulation : ");
+			for (int val : result) {
+				System.out.println(val);
+			}
+		}
+
 		// [] - No combinations found
-		arr = howSum(new int[] {2,4}, 7);
-		if(arr == null) {
-			System.out.println("No combination found");	
+		arr = howSum(new int[] { 2, 4 }, 7);
+		if (arr == null) {
+			System.out.println("No combination found");
 		} else {
 			System.out.println("Combination : ");
-			for(int val : arr) {
+			for (int val : arr) {
 				System.out.println(val);
 			}
 		}
 		
+		result = howSumTabulation(new int[] { 2, 4 }, 7);
+		if(result == null) {
+			System.out.println("No combination found");
+		} else {
+			System.out.println("Tabulation : ");
+			for (int val : result) {
+				System.out.println(val);
+			}
+		}
+		
+		
+
 		// [2,2,2,2]
-		arr = howSum(new int[] {2,3,5}, 8);
-		if(arr == null) {
-			System.out.println("No combination found");	
+		arr = howSum(new int[] { 2, 3, 5 }, 8);
+		if (arr == null) {
+			System.out.println("No combination found");
 		} else {
 			System.out.println("Combination : ");
-			for(int val : arr) {
+			for (int val : arr) {
 				System.out.println(val);
 			}
 		}
 		
+		result = howSumTabulation(new int[] { 2, 3, 5 }, 8);
+		if(result == null) {
+			System.out.println("No combination found");
+		} else {
+			System.out.println("Tabulation : ");
+			for (int val : result) {
+				System.out.println(val);
+			}
+		}
+
 		// [] - No combinations found
-		arr = howSum(new int[] {7,14}, 300);
-		if(arr == null) {
-			System.out.println("No combination found");	
+		arr = howSum(new int[] { 7, 14 }, 300);
+		if (arr == null) {
+			System.out.println("No combination found");
 		} else {
 			System.out.println("Combination : ");
-			for(int val : arr) {
+			for (int val : arr) {
+				System.out.println(val);
+			}
+		}
+		
+		result = howSumTabulation(new int[] { 7, 14 }, 300);
+		if(result == null) {
+			System.out.println("No combination found");
+		} else {
+			System.out.println("Tabulation : ");
+			for (int val : result) {
 				System.out.println(val);
 			}
 		}
