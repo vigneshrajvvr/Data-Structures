@@ -27,19 +27,40 @@ public class CanSum {
 	
 	public static void main(String args[]) {
 		int arr[] = new int[] {2,3};
-		System.out.println(canSumCall(arr,7));
+//		System.out.println(canSumCall(arr,7));
+		System.out.println(canSumTabulation(arr,7));
 		
 		arr = new int[] {5,3,4,7};
-		System.out.println(canSumCall(arr,7));
+//		System.out.println(canSumCall(arr,7));
+		System.out.println(canSumTabulation(arr,7));
 		
 		arr = new int[] {2,4};
-		System.out.println(canSumCall(arr,7));
+//		System.out.println(canSumCall(arr,7));
+		System.out.println(canSumTabulation(arr,7));
 		
 		arr = new int[] {2,3,5};
-		System.out.println(canSumCall(arr,8));
+//		System.out.println(canSumCall(arr,8));
+		System.out.println(canSumTabulation(arr,8));
 		
 		arr = new int[] {7,14};
-		System.out.println(canSumCall(arr,300));
+//		System.out.println(canSumCall(arr,300));
+		System.out.println(canSumTabulation(arr,300));
+	}
+	
+	
+	public static boolean canSumTabulation(int[] arr, int target) {
+		boolean result[] = new boolean[target + 1];
+		result[0] = true;
+		for(int i = 0; i < result.length; i++) {
+			if(result[i]) {
+				for(int j = 0; j < arr.length; j++) {
+					if(i + arr[j] <= target) {
+						result[i + arr[j]] = true;
+					}
+				}
+			}
+		}
+		return result[target];
 	}
 	
 	public static boolean canSumCall(int[] arr, int target) {
